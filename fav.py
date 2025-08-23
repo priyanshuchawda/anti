@@ -74,7 +74,7 @@ def test_add_to_favourites_and_verify(driver):
         # 5. Verify Favorited Item is present
         # Assuming the product title will be visible on the favourites page
         # You might need to adjust this XPath based on the actual structure of the favourites page
-        favourited_item_xpath = f"//*[contains(text(), '{product_title}')]"
+        favourited_item_xpath = f"//div[contains(@class, 'shelf-item')]//p[contains(@class, 'shelf-item__title') and text()='{product_title}']"
         favourited_item = wait.until(EC.presence_of_element_located((By.XPATH, favourited_item_xpath)))
         assert favourited_item.is_displayed(), f"Favorited item '{product_title}' not found on favourites page."
         print(f"✓ Favorited item '{product_title}' successfully found on favourites page.")
